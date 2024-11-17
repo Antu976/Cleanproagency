@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../Users/antua/Desktop/clean"
+		},
+		{
+			"path": "../../../Users/antua/Desktop/Cleanpro"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "Cleanpro"
+	}
+}

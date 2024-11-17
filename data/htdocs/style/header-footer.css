@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* le bordure et le padding sont inclus dans son element garatie donc que la taille de l'element reste constante */
+  box-sizing: border-box;
+  font-family: "Inria Sans", sans-serif;
+}
+
+
+.contact{
+  color: #056FE8;
+  font-weight: bold;
+  margin-left: 90%;
+}
+
+.contact2{
+  display: none;
+}
+
+
+li {
+list-style: none; 
+}
+
+nav{
+background: #056FE8;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+padding: 10px;
+font-size: calc(0.4rem + 1vw);
+}
+/* *************** */
+#nav a, #nav a:visited{
+/* **************** */
+/* elle ne fera jamais moins de 0.5rem et suivant comment on aggrandi et diminue la taille va avec */
+  font-size: calc(0.3rem + 1vw);
+  color:  white;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#nav a:hover{
+  text-shadow: 3px 4px 4px #F6CB5B;
+}
+
+ nav ul {
+display: flex;
+justify-content: space-between;
+width: 85%;
+}
+
+
+#nav img{
+  width: auto;
+  height: 50px;
+}
+
+/* **************** */
+li{
+list-style: none;
+}
+
+#profil{
+padding: 20px;
+}
+
+#icons{
+cursor:pointer;
+display: none;
+
+}
+
+
+
+
+
+/****************************** footer **********************************************/
+
+
+h3 {
+    font-size: 20px;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+ #mentions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    background-color: #F6CB5B;
+    height: 50px;
+   
+  } 
+ 
+  #mentions h4 {
+    font-size: 18px;
+    font-weight: bold;
+  } 
+
+#mentions a{
+    text-decoration: none;
+}
+.localisation a {
+    color: #fff;
+}
+footer section{
+display: flex;
+flex-direction: column;
+align-items: stretch;
+}
+#footer {
+    background-color: #056FE8;
+    text-align: center;
+    color: #fff;
+    padding: 20px 0;
+
+
+    
+  }
+ 
+.footer-container {
+    display: flex;
+  }
+  
+  .localisation,
+  .Horaires,
+  .reseaux {
+    flex: 1;
+    /* margin-right: 20px; */
+ 
+  }
+
+  .reseaux a{
+    text-decoration: none;
+    color: white;
+    margin-right: 5%;
+  }
+ 
+  .appointment-cta {
+    text-align: center;
+     margin-top: 20px; 
+ 
+  }
+ 
+  .copyright {
+    text-align: center;
+  }
+  ul, ol {
+    list-style-type: none;
+  }
+
+  
+
+
+
+  @media only screen and (min-width:345px) and (max-width:1024px){
+
+    nav{
+      justify-content: space-evenly;
+    }
+    #icons {
+      display: block;
+      color: #fff;
+    }
+    #icons:before {
+      content: "\2630";
+    }
+    .active #icons:before {
+      content: "\2715";
+    }
+    nav ul {
+      position: fixed;
+      left: -100%;
+      top: 7%;
+      flex-direction: column;
+      background: #056FE8;
+      width: 100%;
+      text-align: center;
+      transition: 0.25s;
+    }
+    nav li {
+      padding: 3px 0;
+    }
+    nav li:hover {
+      background: rgb(157, 217, 240);
+    }
+    nav.active ul {
+      left: 0;
+    }
+
+    #mentions {
+      display: flex;
+      flex-direction: column;
+     align-items: center;
+     background-color: #F6CB5B;
+     height: 100px;
+      
+    } 
+    .contact2{
+      display: block;
+    }
+
+    .contact{
+      display: none;
+    }
+  
+  }

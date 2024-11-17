@@ -1,0 +1,108 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Inria Sans", sans-serif;
+}
+main {
+    height: 70vh;
+    margin-top: -30px;
+    background: rgb(28, 62, 255, 0.1);
+ 
+}
+  article{
+    text-align: center;
+}
+article h1 {
+    font-size: 40px;
+    padding-top: 35px;
+}
+
+article p{
+    font-size: 30px;
+}
+
+.titre-form{
+    text-align: center;
+    color: #F6CB5B;
+    /* background-color: rgba(5,111,232,1); */
+    background-color: #004EBA;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -20px;
+    border-radius: 15px;
+}
+
+form{
+ margin: auto;
+    /* background: linear-gradient(50deg, #056FE8, #F6CB5B); */
+    background: rgb(5,111,232,0.1);
+    border-right:solid 5px#056FE8;
+    border-bottom:solid #056FE8;
+    border-left: solid 5px#F6CB5B;
+    border-top: solid #F6CB5B;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50%;
+    padding-bottom: 2%;
+}
+
+#button{
+    display: flex;
+    justify-content: space-between;
+    border-color: #F6CB5B;
+    margin-top: 5%;
+}
+#button button{
+    border-color: #F6CB5B;
+}
+
+#button a{
+    text-decoration: none;
+}
+
+
+table{
+    max-height: 300px; /* ajustez la hauteur maximale selon vos besoins */
+    overflow-y: scroll; /* activer le défilement vertical lorsque le contenu dépasse la hauteur maximale */
+    border: 1px solid #ccc; /* optionnel : ajouter une bordure pour mieux délimiter la fenêtre scrollable */
+    padding: 10px; /* optionnel : ajouter de l'espace intérieur pour le contenu */
+    margin: auto;
+}
+
+
+a{
+    color: #056FE8;
+}
+
+a:visited{
+    color:#056FE8
+}
+
+
+    table{
+        border: 2px solid black ; 
+    }
+
+    td, th{
+        border :1px solid black;
+    }
+
+    @media only screen and (min-width:345px) and (max-width:1024px){
+   
+        form{
+           width: 100%;
+           height: 80%;
+        
+        }
+        table {
+            display: flex;
+            flex-direction: column;
+        }
+        
+     }
+
+     

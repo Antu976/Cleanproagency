@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    height: 1000px;
+    width: 100%;
+}
+.background_img{
+    height: 60%;
+    background-image: url(../img/Clean_Pro_Agency.png);
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    padding-top: 17%;
+    padding-left: 9%;
+    
+}
+
+.background_img button{
+    width: 200px;
+    height: 40px;
+    margin-top: 1%;
+    border: none;
+}
+
+
+#container{
+    background-color: rgba(246,203,91,0.7);
+    height: 200px;
+    text-align: center;
+    padding-top: 5%;
+    font-weight: bold;
+}
+
+a, a:visited, button{
+    text-decoration: none;
+    color:#056FE8;
+    font-weight: bold;
+}
+
+#progre{
+    margin-right: 15%;
+}
+
+
+ @media only screen and (min-width:345px) and (max-width:1024px){
+  
+    .button{
+        
+        padding-top: 35%;   
+    }
+
+    main{
+        height: 1050px;
+        width: 100%;
+    }
+
+    #progre{
+        padding-bottom: 5%;
+    }
+    
+ } 
+
+ @media only screen and  (max-width:400px){
+    .button{
+        
+        padding-top: 60%;   
+    }
+
+    main{
+        height: 1100px;
+        width: 100%;
+    }
+
+    #progre{
+        padding-bottom: 40%;
+    }
+
+ }

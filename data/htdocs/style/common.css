@@ -1,0 +1,151 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Inria Sans", sans-serif;
+    box-sizing: border-box;
+    /* Open Sans est conçue pour être neutre et lisible. Elle a un caractère amical et accueillant sans être trop décontracté, parfait pour un site professionnel de services. */
+    /* Google Fonts. */
+}
+
+
+main {
+    
+    background: rgb(28, 62, 255, 0.1);
+    padding-bottom: 10%;
+  }
+
+  article{
+    text-align: center;
+    padding-bottom: 2%;
+}
+article h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+article p{
+    font-size: 30px;
+    /* margin-left: 40%;
+    text-align: center; */
+}
+
+
+
+/* Définition d'un container pour gérer l'affichage */
+.container{
+    /* Masquer le débordement/cacher les élements qui dépassent du container */
+    overflow: hidden;
+    width: 100vw;
+    /* height: 200vh; */
+    margin-right: 5%;
+    border-radius: 25px;
+    
+}
+
+/* Définition du carousel */
+.carousel{
+    position: relative;
+    /* Le carousel est positionné relativement à son parent, ce qui permet le déplacer sans affecter les autres éléments du tableau, ce qui va permettre à ses enfants de se porisionner suivant lui w */
+}
+
+/* Définition de l'élément contenant les diapositives */
+.carousel-inner{
+    /* afficher les élèments en lignes */
+    display: flex;
+    /* cacher les éléments qui dépassent */
+    overflow: hidden;
+    /* hauteur égale à 100% de la vue */
+    height: 100 vh;
+    /* empèche les éléments de se placer sur plusieurs lignes */
+    flex-wrap: nowrap;
+}
+
+
+/* Définition des diapositives */
+.slide{
+    /* en la diapositive ne cherchera pas à grandir même s'il ya de l'espace flex-grow :0 et ne cherchera pas à se retrecie flex-shrink:0 et occupera toute  avec une base de 100%  c'est à dire qu'il va essayer d'occuper toute l'espace flex-basis*/
+    flex: 0 0 100%;
+    height: 100%;
+    transition: .5s ease-in-out;
+}
+.slide img{
+    width: 100%;
+    height: 100%;
+    /* couvre toute l'espace disponible sans déformer leur ratio  */
+    object-fit: cover;
+}
+
+/* définition des boutons de controle du carousel */
+.carousel-controls{
+    /* les boutons sont absoluments positionnés */
+    /* position: absolute; */
+    /* ils sont placés au dessus des autres éléments */
+    /* z-index: 5; */
+    /* la distance à gauche, a droite et en haut est de 10% */
+    /* left: 10%; */
+    /* right: 10%;
+    top: 10%; */
+    /* les boutons en lignes  */
+    display: flex;
+    justify-content: space-between
+
+}
+
+
+/* style des boutons de controle */
+.carousel-controls button{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #F6CB5B;
+    border-color: #F6CB5B;
+    border-radius: 20%;
+}
+
+/* Définition des points de contrôle */
+.carousel-dots{
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    right: 50%;
+    bottom: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+/* style des points de contrôle */
+.carousel-dots .dots{
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* style pour les points de navigation de carrousel */
+.carousel-dots  .active{
+    /* border de 10px pour les points actifs */
+    border-radius: 50%;
+    border:10px solid #F6CB5B
+    /* !important permet de surcharger les autres styles éventuels */
+}
+
+
+.carousel-dots .inactive{
+    border-radius: 50%;
+    border: 10px solid #056FE8;
+}
+
+section{
+    display: flex;
+}
+
+#page{
+    margin-left: 45%;
+}
+
+@media only screen and (min-width:345px) and (max-width:1024px){
+    section{
+        display: flex;
+        flex-direction:column-reverse;
+        align-items: center;
+    }
+
+}
