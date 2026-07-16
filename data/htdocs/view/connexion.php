@@ -13,12 +13,17 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion — Clean Pro Agency</title>
+    <link rel="icon" href="img/flavicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/connexion.css">
+    <link rel="stylesheet" href="./style/theme.css">
 </head>
 <body>
 
@@ -33,7 +38,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <input type="password" name="passwordAdd" placeholder="Votre Mot de Passe" autocomplete="off" required>
             <button type="submit" name="submitConnexion" class="connecter">Se connecter</button>
 
-            <button type="submit"  class="inscription"><a href="inscription.php" >Créer un nouveau compte</a></button>
+            <a href="inscription.php" class="inscription">Créer un nouveau compte</a>
 
             <p class="errorMessage"><?php echo $messageConnexion ?>
             <?php echo  $error ?></p>

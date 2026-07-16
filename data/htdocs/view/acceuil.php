@@ -1,98 +1,130 @@
-    
-<main>
-    <div class="background_img"> 
-        <div class="button">
-        <button type="submit"> <a href="rdv.php" >Prendre un Rendez-vous</a></button>
-        <button>Demander un Devis</button>
-    </div>
-    </div>
-   
+<main class="home">
 
-
-    <div id="container">
-        <div class="row align-items-start">
-          <div class="col">
-           Économie  
-          </div>
-          <div class="col">
-           Sérénité
-          </div>
-          <div class="col">
-           Transparence
-          </div>
-          <div class="col">
-            Proximité
-           </div>
-        </div>
-      </div>
-
-
-      <div class="position-relative m-4">
-        <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="height: 1px;">
-          <div class="progress-bar" style="width: 50%"></div>
-        </div>
-        <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button>
-        <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">2</button>
-        <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
-      </div>
-
-
-      <div class="container text-center" id="progre">
-        <div class="row align-items-center">
-          <div class="col">
-            <h3>Planification simplifiée </h3>
-            Prenez rendez-vous en ligne rapidement et facilement
-            Personnalisez vos besoins de nettoyage selon votre domicile ou votre entreprise 
-          </div>
-          <div class="col">
-            <h3>Service Nettoyage Professionnel</h3>
-            Bénéficiez de l'expertise de notre équipe qualifiée
-            Nous utilisons des produits respectueux de l'environnement pour garantir un nettoyage efficace et sans danger
-          </div>
-          <div class="col">
-            <h3>Satisfaction Garantie</h3>
-            Notre engagement envers la qualité garantit votre Satisfaction
-            Notre réactivité à vos besoins assure une résolution rapide de toute préoccupation
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="row row-cols-1 row-cols-md-3 g-4" id="cardd">
-        <div class="col">
-          <div class="card">
-            <img src="./img/canape.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <!-- ============================ HÉRO ============================ -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow"><i class="fa-solid fa-location-dot"></i> Ramonville-Saint-Agne &amp; alentours</span>
+            <h1>Clean Pro Agency</h1>
+            <p class="hero-tagline">
+                Votre espace impeccable, sans effort. Voiture, canapé, tapis, matelas
+                et vitres — pris en charge par une équipe de professionnels.
+            </p>
+            <div class="hero-actions">
+                <a href="rdv.php" class="hero-btn hero-btn--primary">Prendre un rendez-vous</a>
+                <a href="rdv.php" class="hero-btn hero-btn--ghost">Demander un devis</a>
             </div>
-          </div>
+            <ul class="hero-trust">
+                <li><i class="fa-solid fa-bolt"></i> Flexible</li>
+                <li><i class="fa-solid fa-clock"></i> Rapide</li>
+                <li><i class="fa-solid fa-shield-heart"></i> Fiable</li>
+            </ul>
         </div>
-        <div class="col">
-          <div class="card">
-            <img src="./img/matelas (1).jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </section>
+
+    <!-- ========================== SERVICES ========================= -->
+    <section class="services">
+        <h2 class="section-title">Nos services</h2>
+        <p class="section-sub">Choisissez la prestation adaptée à vos besoins.</p>
+
+        <div class="services-grid">
+            <article class="service-card">
+                <div class="service-img" style="background-image:url('img/voiture.jpg')"></div>
+                <div class="service-body">
+                    <h3>Nettoyage voiture</h3>
+                    <p>Intérieur, sièges et moquettes comme au premier jour.</p>
+                    <a href="service.php?s=voiture" class="service-link">Découvrir <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-img" style="background-image:url('img/canape.jpg')"></div>
+                <div class="service-body">
+                    <h3>Nettoyage canapé</h3>
+                    <p>Tissus ravivés, taches éliminées en profondeur.</p>
+                    <a href="service.php?s=canape" class="service-link">Découvrir <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-img" style="background-image:url('img/tapis.jpg')"></div>
+                <div class="service-body">
+                    <h3>Nettoyage tapis</h3>
+                    <p>Fibres nettoyées et assainies, couleurs éclatantes.</p>
+                    <a href="service.php?s=tapis" class="service-link">Découvrir <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="service-card">
+                <div class="service-img" style="background-image:url('img/matelas (1).jpg')"></div>
+                <div class="service-body">
+                    <h3>Nettoyage matelas</h3>
+                    <p>Un couchage sain, débarrassé des acariens.</p>
+                    <a href="service.php?s=matelas" class="service-link">Découvrir <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- =========================== VALEURS ========================= -->
+    <section class="values">
+        <h2 class="section-title">Pourquoi nous choisir</h2>
+
+        <div class="values-grid">
+            <div class="value">
+                <i class="fa-solid fa-piggy-bank"></i>
+                <h3>Économie</h3>
+                <p>Des tarifs justes et sans surprise.</p>
             </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./img/tapis.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <div class="value">
+                <i class="fa-solid fa-couch"></i>
+                <h3>Sérénité</h3>
+                <p>On s'occupe de tout, vous profitez.</p>
             </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="./img/voiture.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <div class="value">
+                <i class="fa-solid fa-eye"></i>
+                <h3>Transparence</h3>
+                <p>Un devis clair avant chaque prestation.</p>
             </div>
-          </div>
+            <div class="value">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3>Proximité</h3>
+                <p>Une équipe locale, proche de vous.</p>
+            </div>
         </div>
-      </div> -->
+    </section>
+
+    <!-- ========================= ÉTAPES ============================ -->
+    <section class="steps">
+        <h2 class="section-title">Comment ça marche</h2>
+
+        <div class="steps-grid">
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Planification simplifiée</h3>
+                <p>Prenez rendez-vous en ligne en quelques clics et personnalisez
+                   vos besoins selon votre domicile ou votre entreprise.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Service professionnel</h3>
+                <p>Notre équipe qualifiée intervient avec des produits respectueux
+                   de l'environnement, efficaces et sans danger.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Satisfaction garantie</h3>
+                <p>Un résultat impeccable et une équipe réactive pour répondre
+                   à la moindre de vos préoccupations.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================= CTA FINAL ========================= -->
+    <section class="home-cta">
+        <h2>Prêt à rendre votre espace impeccable ?</h2>
+        <p>Réservez votre créneau dès aujourd'hui, c'est rapide et sans engagement.</p>
+        <a href="rdv.php" class="hero-btn hero-btn--primary">Prendre rendez-vous</a>
+    </section>
+
 </main>

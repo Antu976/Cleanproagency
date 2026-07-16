@@ -6,6 +6,7 @@ include './utils/bdd.php';
 include './model/profil.php';
 
 $showUser="";
+$profilData = null;   // les infos de l'utilisateur connecté
 
 
 
@@ -17,14 +18,7 @@ if(isset($_SESSION['user']) && isset($_SESSION['user']['email'])) {
     $data = showUser($bdd, $user_email);
 
     foreach ($data as $user){
-        $showUser = $showUser."<p>Nom:  {$user['name_client']}</p>
-        <p>Prénom:  {$user['prenom_client']}</p>
-        <p>Email: {$user['email_client']}</p>
-        <p>Téléphone: {$user['telephone']}</p>
-        <p>Adresse:  {$user['adresse']}</p>
-        <p>Code postale: {$user['code_postale']}</p>
-        <p>Ville: {$user['ville_rdv']}</p>
-        <br><br>";
+        $profilData = $user;   // on garde la ligne pour l'affichage en carte
     }
 
 
@@ -65,10 +59,12 @@ $jscarousel="";
 $jspopup="";
 $csscoordonnees="";
 $cssrdv="";
-$cssheader_footer="";
-$csscommon="";
+$cssheader_footer="./style/header-footer.css";
+$csscommon="./style/common.css";
 $cssrecap="";
 
+include './view/header.php';
 include './view/profil.php';
+include './view/footer.php';
 
 ?>

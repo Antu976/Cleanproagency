@@ -72,7 +72,13 @@ if (isset($_POST['submitConnexion'])) {
                 $_SESSION['user_id'] = $userData['id_client'];
                 $_SESSION['user_email'] = $userData;
                 $_SESSION['user_email']['authenticated'] = true; // Indicateur de connexion réussie
-                // Rediriger vers la page d'accueil ou une autre page
+                // Rediriger vers la destination mémorisée (ex: réservation) sinon l'accueil
+                if (!empty($_SESSION['redirect_after_login'])) {
+                    $dest = $_SESSION['redirect_after_login'];
+                    unset($_SESSION['redirect_after_login']);
+                    header('Location: ' . $dest);
+                    exit;
+                }
                 header('Location: index.php');
                 exit;
             } else {

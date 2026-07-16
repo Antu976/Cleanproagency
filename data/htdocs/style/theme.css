@@ -1,0 +1,736 @@
+/* =========================================================
+   theme.css — Couche moderne partagée (Clean Pro Agency)
+   Chargée EN DERNIER sur chaque page : modernise la
+   typographie, les boutons, les formulaires, le header,
+   le footer, et ajoute le responsive. Garde le bleu/jaune.
+   ========================================================= */
+
+:root {
+    --bleu:        #056FE8;
+    --bleu-fonce:  #004EBA;
+    --bleu-clair:  #eaf2fe;
+    --jaune:       #F6CB5B;
+    --jaune-fonce: #eab73a;
+    --texte:       #1f2933;
+    --texte-doux:  #52606d;
+    --fond:        #f5f8fc;
+    --blanc:       #ffffff;
+    --ombre-sm:    0 2px 8px rgba(5, 111, 232, .10);
+    --ombre-md:    0 8px 24px rgba(5, 111, 232, .14);
+    --rayon:       12px;
+    --rayon-lg:    18px;
+    --max:         1200px;
+}
+
+/* ------------------------------- Base ------------------------------- */
+html { scroll-behavior: smooth; }
+
+body {
+    color: var(--texte);
+    line-height: 1.55;
+    background: var(--fond);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; }
+
+a { transition: color .15s ease, background .15s ease, opacity .15s ease; }
+
+h1, h2, h3, h4 { line-height: 1.2; }
+
+/* ----------------------- Barre utilitaire (top) --------------------- */
+.topbar {
+    background: var(--bleu-fonce);
+    color: #eaf2fe;
+    font-size: 13.5px;
+}
+.topbar-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 7px 22px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+}
+.topbar-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #eaf2fe;
+    text-decoration: none;
+}
+.topbar-item i { color: var(--jaune); }
+.topbar-contact:hover, .topbar-item[href]:hover { color: #fff; text-decoration: underline; }
+
+/* Ancienne barre .contact (desktop) : neutralisée */
+.contact { display: none; }
+
+/* ------------------------------ Navbar ------------------------------ */
+nav {
+    background: var(--bleu) !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .16);
+}
+#nav {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    /* fond pleine largeur, contenu centré sur 1200px (plus de blanc sur les côtés) */
+    padding: 8px max(22px, calc((100% - var(--max)) / 2)) !important;
+    gap: 16px;
+    justify-content: flex-start !important;   /* aligné à gauche */
+    align-items: center;
+}
+.brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
+.brand img, #nav img {
+    height: 46px;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 9px;
+}
+
+/* Menu : collé à gauche, à côté du logo */
+#nav ul {
+    width: auto !important;
+    flex: 1 1 auto;
+    margin: 0;
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 2px;
+}
+#nav a, #nav a:visited {
+    font-size: 14.5px !important;
+    letter-spacing: .2px;
+    text-transform: none !important;          /* fini le tout-majuscules */
+    padding: 9px 12px;
+    border-radius: 8px;
+}
+#nav a:hover {
+    text-shadow: none !important;         /* remplace l'ancien text-shadow jaune */
+    background: rgba(255, 255, 255, .14);
+    color: var(--jaune) !important;
+}
+
+/* Bouton "Prendre RDV" + profil : poussés à droite */
+.nav-cta-li { margin-left: auto !important; }
+.nav-cta, .nav-cta:visited {
+    background: var(--jaune);
+    color: var(--texte) !important;
+    text-transform: none !important;
+    font-weight: 800;
+    padding: 9px 20px !important;
+    border-radius: 10px !important;
+    white-space: nowrap;
+}
+.nav-cta:hover { background: #eab73a !important; color: var(--texte) !important; }
+
+#profil { padding: 6px 10px !important; }
+#profil:hover { background: transparent; }
+
+/* La barre utilitaire disparaît sur mobile (le menu burger gère le contact) */
+@media (max-width: 1024px) {
+    .topbar { display: none; }
+    .nav-cta-li { display: none; }
+    /* On répartit logo / contact / burger au lieu de les coller à gauche */
+    #nav {
+        justify-content: space-between !important;
+        padding: 10px 18px !important;
+        gap: 10px;
+    }
+    .contact2 {
+        margin: 0;
+        font-size: 15px;
+    }
+    #icons { font-size: 24px; }
+    .brand img, #nav img { height: 40px; }
+
+    /* ---- Menu burger : panneau déroulant plein largeur ---- */
+    #nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100% !important;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+        text-align: left;
+        background: var(--bleu-fonce);
+        padding: 6px 0 12px !important;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, .28);
+        opacity: 1;
+        visibility: visible;
+        transition: left .28s ease;
+    }
+    nav.active ul { left: 0 !important; }
+    #nav ul li { width: 100%; padding: 0; }
+    #nav ul li:hover { background: transparent; }
+    #nav ul li a,
+    #nav ul li #profil {
+        display: block;
+        padding: 15px 26px !important;
+        font-size: 16px !important;
+        border-radius: 0 !important;
+        border-left: 3px solid transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+    #nav ul li:last-child a { border-bottom: none; }
+    #nav ul li a:hover {
+        background: rgba(255, 255, 255, .10) !important;
+        border-left-color: var(--jaune);
+        color: var(--jaune) !important;
+    }
+}
+
+/* ------------------------------ Titres ------------------------------ */
+article h1 { font-size: clamp(28px, 4vw, 42px); }
+article p  { font-size: clamp(16px, 2.2vw, 24px); color: var(--texte-doux); }
+
+/* --------------- Bandeaux de titre bleus (formulaires) -------------- */
+.titre-form,
+.titre-container-formulaire { border-radius: var(--rayon) var(--rayon) 0 0; }
+
+/* ---------- Cartes "formulaire" : ombre + coins plus doux ----------- */
+.formulaire,
+.container-formulaire {
+    box-shadow: var(--ombre-md);
+    border-radius: var(--rayon-lg) !important;
+    background: var(--blanc) !important;
+    border: 1px solid #e6edf6 !important;
+    overflow: hidden;
+}
+
+/* ------------------------------ Boutons ----------------------------- */
+button, .btn {
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--blanc);
+    background: var(--bleu);
+    border: none;
+    border-radius: 10px;
+    padding: 11px 22px;
+    transition: transform .1s ease, box-shadow .15s ease, background .15s ease;
+}
+button:hover, .btn:hover {
+    background: var(--bleu-fonce);
+    box-shadow: var(--ombre-sm);
+    transform: translateY(-1px);
+}
+button a, button a:visited { color: inherit !important; text-decoration: none; }
+
+/* Boutons jaunes (actions secondaires / inscription) */
+.inscription, .sincrire, .formulaire button[name="submit"],
+.background_img button {
+    background: var(--jaune) !important;
+    color: var(--texte) !important;
+}
+.inscription:hover, .sincrire:hover,
+.formulaire button[name="submit"]:hover,
+.background_img button:hover { background: var(--jaune-fonce) !important; }
+.inscription a, .background_img button a { color: var(--texte) !important; }
+
+/* On protège les boutons ronds du carrousel (ne pas les uniformiser) */
+.carousel-controls button {
+    background: var(--jaune) !important;
+    color: var(--bleu-fonce);
+    border: none !important;
+    border-radius: 50% !important;
+    width: 44px; height: 44px;
+    padding: 0 !important;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    box-shadow: var(--ombre-sm);
+}
+.carousel-controls button:hover { transform: scale(1.06); }
+
+/* Boutons héro (accueil + pages service) — visibles et adaptés aux daltoniens */
+.hero-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: transform .12s ease, box-shadow .18s ease, background .18s ease;
+}
+.hero-btn--primary {
+    background: var(--jaune);
+    color: var(--texte) !important;
+    border-color: var(--jaune);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+}
+.hero-btn--primary:hover {
+    background: var(--jaune-fonce);
+    border-color: var(--jaune-fonce);
+    transform: translateY(-2px);
+}
+.hero-btn--ghost {
+    background: #fff;
+    color: var(--bleu-fonce) !important;
+    border-color: #fff;
+}
+.hero-btn--ghost:hover {
+    background: #eaf2fe;
+    border-color: #eaf2fe;
+    color: var(--bleu-fonce) !important;
+}
+
+/* ---------------------------- Formulaires --------------------------- */
+select, input, textarea {
+    font-family: inherit;
+    font-size: 15px;
+    border: 1px solid #d9e2ee !important;
+    border-radius: 9px !important;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+select:focus, input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--bleu) !important;
+    box-shadow: 0 0 0 3px rgba(5, 111, 232, .15);
+}
+label { font-weight: 600; color: var(--texte-doux); }
+
+/* ------------------------------ Footer ------------------------------ */
+#footer { padding: 40px 22px !important; }
+.footer-container {
+    max-width: var(--max);
+    margin: 0 auto;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+.footer-container > div { min-width: 180px; }
+#footer h3 {
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    font-size: 15px;
+    color: var(--jaune);
+    margin-bottom: 10px;
+}
+#footer p { margin: 4px 0; }
+.reseaux ul { padding: 0; }
+.reseaux li { margin: 6px 0; }
+.reseaux a:hover { color: var(--jaune); }
+
+.appointment-cta { margin-top: 30px !important; }
+.cta-btn {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--jaune);
+    color: var(--texte);
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+.cta-btn:hover { background: var(--jaune-fonce); }
+.copyright { margin-top: 18px; font-size: 13px; opacity: .85; }
+
+#mentions { align-items: center; gap: 20px; }
+#mentions a { color: var(--texte); }
+#mentions a:hover { text-decoration: underline; }
+
+/* ========================= PAGES SERVICE =========================== */
+.service-page { background: var(--fond); }
+.service-page main, main.service-page { height: auto; }
+
+.service-page .svc-hero,
+.service-page .svc-others { display: block; }   /* annule section{display:flex} */
+.svc-hero {
+    padding: 56px 24px;
+    background: linear-gradient(120deg, var(--bleu-fonce), var(--bleu));
+    color: #fff;
+}
+.svc-hero-inner { max-width: var(--max); margin: 0 auto; }
+.svc-breadcrumb { font-size: 14px; opacity: .9; margin-bottom: 14px; }
+.svc-breadcrumb a { color: #fff; text-decoration: none; }
+.svc-breadcrumb a:hover { text-decoration: underline; }
+.svc-breadcrumb span { margin: 0 4px; }
+.svc-hero h1 { font-size: clamp(28px, 4.4vw, 44px); margin: 0 0 12px; }
+.svc-hero p { font-size: clamp(16px, 2.2vw, 20px); max-width: 640px; opacity: .95; margin: 0 0 24px; }
+.svc-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.svc-body {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+.svc-content h2 { color: var(--bleu-fonce); font-size: 24px; margin: 0 0 12px; }
+.svc-content > p { color: var(--texte-doux); margin: 0 0 20px; font-size: 16px; }
+.svc-atouts { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 12px; }
+.svc-atouts li { display: flex; align-items: center; gap: 10px; color: var(--texte); font-weight: 600; }
+.svc-atouts i { color: var(--bleu); font-size: 18px; }
+.svc-prix {
+    display: inline-block;
+    background: var(--bleu-clair);
+    color: var(--bleu-fonce);
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 999px;
+    margin: 0 0 22px;
+}
+.svc-media img {
+    width: 100%;
+    height: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: var(--ombre-md);
+}
+
+.svc-others { max-width: var(--max); margin: 0 auto; padding: 0 24px 64px; }
+.svc-others .section-title { margin-bottom: 24px; }
+.svc-others-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.svc-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid #e6edf6;
+    border-radius: 999px;
+    padding: 10px 20px;
+    color: var(--bleu-fonce);
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--ombre-sm);
+    transition: transform .12s ease, box-shadow .18s ease;
+}
+.svc-chip:hover { transform: translateY(-2px); box-shadow: var(--ombre-md); color: var(--bleu); }
+.svc-chip i { transition: transform .15s ease; }
+.svc-chip:hover i { transform: translateX(3px); }
+
+@media (max-width: 860px) {
+    .svc-body { grid-template-columns: 1fr; gap: 26px; padding: 44px 20px; }
+    .svc-media { order: -1; }
+}
+
+/* ========================== PAGE PROFIL ============================ */
+.profil-page { background: var(--fond); }
+.profil-page main, main.profil-page { height: auto; }
+.profil-wrap {
+    display: block;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 50px 20px 64px;
+}
+.profil-card {
+    background: #fff;
+    border: 1px solid #e6edf6;
+    border-radius: 18px;
+    box-shadow: var(--ombre-md);
+    overflow: hidden;
+}
+.profil-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 28px 28px;
+    background: linear-gradient(120deg, var(--bleu-fonce), var(--bleu));
+    color: #fff;
+}
+.profil-avatar {
+    flex: 0 0 auto;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: var(--jaune);
+    color: var(--texte);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 800;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .2);
+}
+.profil-identity h1 { font-size: 24px; margin: 0 0 4px; color: #fff; }
+.profil-sub { margin: 0; opacity: .9; font-size: 15px; word-break: break-all; }
+
+.profil-info { padding: 10px 28px 4px; }
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eef2f8;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--texte-doux);
+    font-weight: 600;
+    font-size: 15px;
+}
+.info-label i { color: var(--bleu); width: 18px; text-align: center; }
+.info-value { color: var(--texte); font-weight: 600; text-align: right; word-break: break-word; }
+
+.profil-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 22px 28px 28px;
+}
+.profil-actions .hero-btn { flex: 1; text-align: center; }
+.profil-logout {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    background: #fff;
+    color: #b3261e;
+    border: 2px solid #f0b4af;
+    transition: background .15s ease, color .15s ease;
+}
+.profil-logout:hover { background: #b3261e; color: #fff; border-color: #b3261e; }
+
+@media (max-width: 480px) {
+    .profil-head { flex-direction: column; text-align: center; }
+    .info-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .info-value { text-align: left; }
+}
+
+/* ==================== PAGE RÉCAP DES RENDEZ-VOUS =================== */
+.recap-page { background: var(--fond); }
+.recap-page main, main.recap-page { height: auto !important; margin-top: 0 !important; }
+.recap-page article { text-align: center; padding: 42px 20px 6px; }
+.recap-page article h1 { color: var(--bleu-fonce); }
+.recap-page article p { color: var(--texte-doux); font-size: 17px; }
+
+.recap-wrap {
+    display: block;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 24px 24px 64px;
+}
+.recap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 22px;
+}
+.rdv-card {
+    background: #fff;
+    border: 1px solid #e6edf6;
+    border-radius: 16px;
+    box-shadow: var(--ombre-sm);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform .12s ease, box-shadow .2s ease;
+}
+.rdv-card:hover { transform: translateY(-4px); box-shadow: var(--ombre-md); }
+.rdv-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eef2f8;
+    padding-bottom: 12px;
+}
+.rdv-service {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--bleu-fonce);
+}
+.rdv-service i { color: var(--bleu); }
+.rdv-id { color: var(--texte-doux); font-weight: 700; font-size: 14px; }
+
+.rdv-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.rdv-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--bleu-clair);
+    color: var(--bleu-fonce);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+.rdv-badge i { color: var(--bleu); }
+
+.rdv-note {
+    margin: 0;
+    background: #fff8e6;
+    border: 1px solid #f6e2ac;
+    color: #7a5b00;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+.rdv-note i { color: var(--jaune-fonce); margin-top: 2px; }
+
+.rdv-actions { display: flex; gap: 10px; margin-top: 4px; }
+.rdv-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: background .15s ease, color .15s ease;
+}
+.rdv-btn--edit { background: var(--bleu); color: #fff; }
+.rdv-btn--edit:hover { background: var(--bleu-fonce); }
+.rdv-btn--del { background: #fff; color: #b3261e; border-color: #f0b4af; }
+.rdv-btn--del:hover { background: #b3261e; color: #fff; border-color: #b3261e; }
+
+.recap-empty {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e6edf6;
+    border-radius: 18px;
+    box-shadow: var(--ombre-sm);
+    padding: 50px 24px;
+    max-width: 520px;
+    margin: 0 auto;
+}
+.recap-empty i { font-size: 46px; color: var(--bleu); }
+.recap-empty h2 { color: var(--bleu-fonce); margin: 16px 0 6px; }
+.recap-empty p { color: var(--texte-doux); margin: 0 0 22px; }
+
+.recap-back { text-align: center; margin-top: 34px; }
+
+/* =================== PLANNING DE CRÉNEAUX (RDV) ==================== */
+.planning { margin-bottom: 16px; }
+.planning-hint { font-size: 14px; color: var(--texte-doux); margin: 6px 0; }
+.planning-closed { font-size: 14px; color: #b3261e; font-weight: 600; margin: 8px 0 0; }
+.rdv-page article { padding-top: 34px; }
+
+.planning-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+.planning .slot {
+    cursor: pointer;
+    width: 78px;
+    text-align: center;
+    background: #fff;
+    border: 1.5px solid var(--bleu);
+    color: var(--bleu-fonce);
+    border-radius: 9px;
+    padding: 10px 4px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background .12s ease, color .12s ease, transform .1s ease;
+}
+.planning .slot:hover { background: var(--bleu-clair); transform: translateY(-1px); }
+.planning .slot--active {
+    background: var(--bleu);
+    color: #fff;
+    border-color: var(--bleu);
+}
+.planning .slot--off {
+    background: #f1f1f4;
+    color: #b7b7bd;
+    border-color: #e4e4e9;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+.planning .slot--off:hover { background: #f1f1f4; transform: none; }
+
+/* ------------- Message "connectez-vous pour réserver" -------------- */
+.login-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: var(--bleu-clair);
+    color: var(--bleu-fonce);
+    border: 1px solid #bcd8fb;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 0 0 18px;
+    font-size: 15px;
+}
+.login-notice i { color: var(--bleu); }
+.login-notice a { color: var(--bleu); font-weight: 700; }
+.login-notice a:hover { text-decoration: underline; }
+
+/* --------------------- Pages de contenu (texte) --------------------- */
+.page-contenu {
+    max-width: 820px;
+    margin: 48px auto;
+    padding: 40px;
+    background: var(--blanc);
+    border: 1px solid #e6edf6;
+    border-radius: var(--rayon-lg);
+    box-shadow: var(--ombre-sm);
+}
+.page-contenu h1 {
+    color: var(--bleu-fonce);
+    margin-bottom: 8px;
+}
+.page-contenu h1::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 4px;
+    margin-top: 12px;
+    background: var(--jaune);
+    border-radius: 4px;
+}
+.page-contenu h2 {
+    color: var(--bleu);
+    font-size: 20px;
+    margin: 28px 0 8px;
+}
+.page-contenu p { margin: 10px 0; color: var(--texte-doux); }
+
+/* ================= RESPONSIVE : filet de sécurité ================== */
+@media (max-width: 1024px) {
+    .formulaire,
+    .container-formulaire,
+    .container {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    section { gap: 20px; padding-left: 4%; padding-right: 4%; }
+    main { height: auto !important; }
+    #page { margin-left: 0 !important; text-align: center; }
+}
+
+@media (max-width: 640px) {
+    .contact { justify-content: center; }
+    article h1 { padding-left: 0 !important; }
+    form { width: 100% !important; }
+    .footer-container { text-align: center; }
+    .container { margin-right: 0 !important; }
+    #button { flex-direction: column; gap: 10px; }
+    table { width: 100% !important; overflow-x: auto; display: block; }
+}

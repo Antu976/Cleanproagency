@@ -15,8 +15,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <h3>Où nous trouver</h3>
                     </a>
                     <p>11 Avenue de l'Europe</p>
-                    <p>31520</p>
-                    <p>Ramonville-Sainte-Agne</p>
+                    <p>31520 Ramonville-Saint-Agne</p>
                 </div>
 
                 <div class="Horaires">
@@ -35,19 +34,15 @@ if (session_status() == PHP_SESSION_NONE) {
                 </div>
             </div>
 
-            <div class="appointment-cta">
-                <p>Prêt à rendre votre espace impeccable ?</p>
-            </div>
-
             <div class="copyright">
-                <p>&copy; 2023 Votre Entreprise de Nettoyage. Tous droits réservés.</p>
+                <p>&copy; <?php echo date('Y'); ?> Clean Pro Agency. Tous droits réservés.</p>
             </div>
         </section>
 
         <div id="mentions">
-            <h4><a href="contact" target="_blank">Contact</a></h4>
-            <h4><a href="mentions" target="_blank">Mentions Légales</a></h4>
-            <h4><a href="propos" target="_blank">A propos de Nous</a></h4>
+            <h4><a href="#footer">Contact</a></h4>
+            <h4><a href="mentions.php">Mentions Légales</a></h4>
+            <h4><a href="apropos.php">À propos de nous</a></h4>
 
         </div>
     </footer>

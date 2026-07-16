@@ -3,6 +3,12 @@
 session_start();
 include './utils/bdd.php';
 
+// Supprimer un rendez-vous exige d'être connecté
+if(!isset($_SESSION['user']['email'])) {
+    header('Location: connexion.php');
+    exit;
+}
+
 if(isset($_GET['id']))
 {
     $id=$_GET['id'];
