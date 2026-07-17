@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Pro Agency — Tableau de bord</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{--bleu:#056FE8;--bleu-f:#004EBA;--jaune:#F6CB5B;--fond:#f4f7fb;--txt:#1f2933;--doux:#52606d;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,sans-serif;}
+  body{background:var(--fond);color:var(--txt);}
+  header{background:linear-gradient(120deg,var(--bleu-f),var(--bleu));color:#fff;padding:26px 5%;}
+  header h1{font-size:24px;}
+  header p{opacity:.9;margin-top:4px;font-size:14px;}
+  main{max-width:1200px;margin:0 auto;padding:24px 4% 60px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:26px;}
+  .kpi{background:#fff;border:1px solid #e6edf6;border-radius:14px;padding:18px 20px;box-shadow:0 2px 8px rgba(5,111,232,.08);}
+  .kpi .label{font-size:13px;color:var(--doux);}
+  .kpi .value{font-size:26px;font-weight:700;color:var(--bleu-f);margin-top:6px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;}
+  .card{background:#fff;border:1px solid #e6edf6;border-radius:16px;padding:18px 20px;box-shadow:0 4px 14px rgba(5,111,232,.08);}
+  .card h3{font-size:16px;color:var(--bleu-f);margin-bottom:14px;}
+  .card canvas{max-height:300px;}
+  footer{max-width:1200px;margin:0 auto;padding:0 4% 40px;color:var(--doux);font-size:13px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Clean Pro Agency — Tableau de bord d'activité</h1>
+  <p>Période : 2025-01-01 → 2026-06-30 &nbsp;·&nbsp; données de démonstration</p>
+</header>
+<main>
+  <section class="kpis">
+    <div class="kpi"><div class="label">Rendez-vous</div><div class="value">2 371</div></div>
+    <div class="kpi"><div class="label">CA total estimé</div><div class="value">161 831 €</div></div>
+    <div class="kpi"><div class="label">Panier moyen</div><div class="value">76 €</div></div>
+    <div class="kpi"><div class="label">Note moyenne</div><div class="value">4.18/5</div></div>
+    <div class="kpi"><div class="label">Taux d'annulation</div><div class="value">9.8 %</div></div>
+    <div class="kpi"><div class="label">Clients actifs</div><div class="value">490</div></div>
+  </section>
+
+  <section class="grid">
+    <div class="card"><h3>Volume par service</h3><canvas id="c_vol"></canvas></div>
+    <div class="card"><h3>Chiffre d'affaires par service (€)</h3><canvas id="c_ca"></canvas></div>
+    <div class="card" style="grid-column:1/-1;"><h3>Évolution mensuelle (saisonnalité)</h3><canvas id="c_evo"></canvas></div>
+    <div class="card"><h3>Occupation par créneau horaire</h3><canvas id="c_occ"></canvas></div>
+    <div class="card"><h3>Charge par jour de la semaine</h3><canvas id="c_jour"></canvas></div>
+    <div class="card"><h3>Répartition des fréquences</h3><canvas id="c_freq"></canvas></div>
+    <div class="card"><h3>Top 10 des villes clientes</h3><canvas id="c_villes"></canvas></div>
+    <div class="card" style="grid-column:1/-1;"><h3>Satisfaction moyenne par service (/5)</h3><canvas id="c_sat"></canvas></div>
+  </section>
+</main>
+<footer>Clean Pro Agency · tableau de bord généré à partir des données de rendez-vous (analytics/data).</footer>
+
+<script>
+const DATA = {"volume_service": {"labels": ["Nettoyage voiture", "Nettoyage canapé", "Nettoyage matelas", "Nettoyage vitres", "Nettoyage tapis"], "values": [745, 557, 447, 330, 292]}, "evolution_mensuelle": {"labels": ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"], "values": [112, 78, 133, 158, 171, 142, 114, 75, 132, 170, 148, 162, 97, 83, 121, 153, 177, 145]}, "occupation_heure": {"labels": ["8h", "9h", "10h", "11h", "12h", "13h", "14h", "15h", "16h", "17h", "18h", "19h", "20h"], "values": [130, 209, 190, 206, 199, 203, 197, 202, 198, 192, 193, 201, 51]}, "charge_jour": {"labels": ["Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"], "values": [415, 452, 453, 462, 589]}, "frequences": {"labels": ["Ponctuelle", "Mensuelle", "Trimestrielle"], "values": [1618, 463, 290]}, "top_villes": {"labels": ["Toulouse", "Ramonville-Saint-Agne", "Balma", "Labège", "Castanet-Tolosan", "Colomiers", "Tournefeuille", "Blagnac", "Muret", "L'Union"], "values": [182, 123, 31, 25, 24, 23, 20, 19, 15, 11]}, "ca_service": {"labels": ["Nettoyage voiture", "Nettoyage canapé", "Nettoyage matelas", "Nettoyage tapis", "Nettoyage vitres"], "values": [49803.0, 47481.0, 35820.0, 14877.0, 13850.0]}, "satisfaction": {"labels": ["Nettoyage canapé", "Nettoyage vitres", "Nettoyage matelas", "Nettoyage voiture", "Nettoyage tapis"], "values": [4.35, 4.17, 4.16, 4.11, 4.05]}, "kpis": {"nb_rdv": 2371, "nb_rdv_realises": 2139, "ca_total": 161831.0, "panier_moyen": 75.66, "taux_annulation": 9.8, "note_moyenne": 4.18, "nb_clients": 500, "clients_actifs": 490, "periode": "2025-01-01 → 2026-06-30"}};
+const BLEU="#056FE8", JAUNE="#F6CB5B", BLEUF="#004EBA", CLAIR="#9DC3F0";
+Chart.defaults.font.family = "'Segoe UI',system-ui,sans-serif";
+Chart.defaults.plugins.legend.display = false;
+const noLegend={plugins:{legend:{display:false}}};
+
+new Chart(c_vol,{type:'bar',data:{labels:DATA.volume_service.labels,
+  datasets:[{data:DATA.volume_service.values,backgroundColor:BLEU,borderRadius:6}]},options:noLegend});
+
+new Chart(c_ca,{type:'bar',data:{labels:DATA.ca_service.labels,
+  datasets:[{data:DATA.ca_service.values,backgroundColor:JAUNE,borderColor:BLEUF,borderWidth:1,borderRadius:6}]},options:noLegend});
+
+new Chart(c_evo,{type:'line',data:{labels:DATA.evolution_mensuelle.labels,
+  datasets:[{data:DATA.evolution_mensuelle.values,borderColor:BLEU,backgroundColor:'rgba(5,111,232,.12)',fill:true,tension:.3,pointRadius:3}]},options:noLegend});
+
+new Chart(c_occ,{type:'bar',data:{labels:DATA.occupation_heure.labels,
+  datasets:[{data:DATA.occupation_heure.values,backgroundColor:JAUNE,borderColor:BLEUF,borderWidth:1,borderRadius:4}]},options:noLegend});
+
+new Chart(c_jour,{type:'bar',data:{labels:DATA.charge_jour.labels,
+  datasets:[{data:DATA.charge_jour.values,backgroundColor:BLEU,borderRadius:6}]},options:noLegend});
+
+new Chart(c_freq,{type:'doughnut',data:{labels:DATA.frequences.labels,
+  datasets:[{data:DATA.frequences.values,backgroundColor:[BLEU,JAUNE,CLAIR]}]},
+  options:{plugins:{legend:{display:true,position:'bottom'}}}});
+
+new Chart(c_villes,{type:'bar',data:{labels:DATA.top_villes.labels,
+  datasets:[{data:DATA.top_villes.values,backgroundColor:BLEUF,borderRadius:5}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}}}});
+
+new Chart(c_sat,{type:'bar',data:{labels:DATA.satisfaction.labels,
+  datasets:[{data:DATA.satisfaction.values,backgroundColor:BLEU,borderRadius:6}]},
+  options:{scales:{y:{min:0,max:5}},plugins:{legend:{display:false}}}});
+</script>
+</body>
+</html>

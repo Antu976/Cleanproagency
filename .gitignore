@@ -1,0 +1,9 @@
+# Données de la base MariaDB : ne doivent pas être versionnées
+data/mariadb/
+
+# Fichiers système
+Thumbs.db
+.DS_Store
+
+# Verrou Git résiduel
+.git/index.lock

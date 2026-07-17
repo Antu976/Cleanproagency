@@ -1,0 +1,189 @@
+{
+  "volume_service": {
+    "labels": [
+      "Nettoyage voiture",
+      "Nettoyage canapé",
+      "Nettoyage matelas",
+      "Nettoyage vitres",
+      "Nettoyage tapis"
+    ],
+    "values": [
+      745,
+      557,
+      447,
+      330,
+      292
+    ]
+  },
+  "evolution_mensuelle": {
+    "labels": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06"
+    ],
+    "values": [
+      112,
+      78,
+      133,
+      158,
+      171,
+      142,
+      114,
+      75,
+      132,
+      170,
+      148,
+      162,
+      97,
+      83,
+      121,
+      153,
+      177,
+      145
+    ]
+  },
+  "occupation_heure": {
+    "labels": [
+      "8h",
+      "9h",
+      "10h",
+      "11h",
+      "12h",
+      "13h",
+      "14h",
+      "15h",
+      "16h",
+      "17h",
+      "18h",
+      "19h",
+      "20h"
+    ],
+    "values": [
+      130,
+      209,
+      190,
+      206,
+      199,
+      203,
+      197,
+      202,
+      198,
+      192,
+      193,
+      201,
+      51
+    ]
+  },
+  "charge_jour": {
+    "labels": [
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi",
+      "Samedi"
+    ],
+    "values": [
+      415,
+      452,
+      453,
+      462,
+      589
+    ]
+  },
+  "frequences": {
+    "labels": [
+      "Ponctuelle",
+      "Mensuelle",
+      "Trimestrielle"
+    ],
+    "values": [
+      1618,
+      463,
+      290
+    ]
+  },
+  "top_villes": {
+    "labels": [
+      "Toulouse",
+      "Ramonville-Saint-Agne",
+      "Balma",
+      "Labège",
+      "Castanet-Tolosan",
+      "Colomiers",
+      "Tournefeuille",
+      "Blagnac",
+      "Muret",
+      "L'Union"
+    ],
+    "values": [
+      182,
+      123,
+      31,
+      25,
+      24,
+      23,
+      20,
+      19,
+      15,
+      11
+    ]
+  },
+  "ca_service": {
+    "labels": [
+      "Nettoyage voiture",
+      "Nettoyage canapé",
+      "Nettoyage matelas",
+      "Nettoyage tapis",
+      "Nettoyage vitres"
+    ],
+    "values": [
+      49803.0,
+      47481.0,
+      35820.0,
+      14877.0,
+      13850.0
+    ]
+  },
+  "satisfaction": {
+    "labels": [
+      "Nettoyage canapé",
+      "Nettoyage vitres",
+      "Nettoyage matelas",
+      "Nettoyage voiture",
+      "Nettoyage tapis"
+    ],
+    "values": [
+      4.35,
+      4.17,
+      4.16,
+      4.11,
+      4.05
+    ]
+  },
+  "kpis": {
+    "nb_rdv": 2371,
+    "nb_rdv_realises": 2139,
+    "ca_total": 161831.0,
+    "panier_moyen": 75.66,
+    "taux_annulation": 9.8,
+    "note_moyenne": 4.18,
+    "nb_clients": 500,
+    "clients_actifs": 490,
+    "periode": "2025-01-01 → 2026-06-30"
+  }
+}

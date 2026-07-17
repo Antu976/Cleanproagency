@@ -1,28 +1,31 @@
 # Clean Pro Agency — Plateforme de réservation & modèle de données
 
-> Application web de prise de rendez-vous pour une entreprise de nettoyage
-> (voiture, canapé, tapis, matelas, vitres), pensée autour d'un **modèle de
-> données relationnel** et d'une **chaîne de validation** garantissant la
-> qualité et l'intégrité des données collectées.
+> Création d'un site de A à Z, et pousser la chose plus loin en générant des données et les étudier 
 
-Ce dépôt sert aussi de **support de démonstration d'un profil orienté données** :
-conception de schéma (MERISE / SQL), intégrité référentielle, règles de qualité,
-intégration d'une **source de données externe officielle**, et pistes
-d'**exploitation analytique** (KPIs, requêtes SQL).
+Ainsi ce dépot sert de support de démonstration d'un profil orienté Data, 
+---
 
+## Module Data Analytics
 
+En complément de l'application, un **module d'analyse de données** exploite les
+rendez-vous, de la donnée brute à la décision — voir `analytics`.
+
+- **Dataset générée** : 500 clients · 2 371 rendez-vous · 983 avis (18 mois).
+- **Pack SQL** : 12 requêtes analytiques [`analytics/sql/analyses.sql`].
+- **Notebook Python** (pandas + matplotlib) : [`analytics/notebook/analyse_cleanpro.ipynb`].
+- **Tableau de bord interactif** (Chart.js) : [`analytics/dashboard/dashboard.html`].
 
 ## Sommaire
 
-1. [Aperçu fonctionnel](#1-aperçu-fonctionnel)
-2. [Stack technique](#2-stack-technique)
-3. [Architecture applicative](#3-architecture-applicative)
-4. [Modèle de données](#4-modèle-de-données)
-5. [Qualité & intégrité des données](#5-qualité--intégrité-des-données)
-6. [Exploitation analytique (KPIs & SQL)](#6-exploitation-analytique-kpis--sql)
-7. [Installation & exécution](#7-installation--exécution)
-8. [Structure du projet](#8-structure-du-projet)
-9. [Pistes d'amélioration](#9-pistes-damélioration)
+1. aperçu-fonctionnel
+2. stack-technique
+3. architecture-applicative
+4. modèle-de-données
+5. qualité--intégrité-des-données
+6. exploitation-analytique-kpis--sql
+7. installation--exécution
+8. structure-du-projet
+9. pistes-damélioration
 
 
 
@@ -73,23 +76,23 @@ du contenu, puis du pied de page.
 
 ## 4. Modèle de données
 
-Base `cleanpro` — schéma relationnel normalisé (3NF) avec contraintes d'intégrité
-référentielle. Le cœur applicatif s'appuie sur `client` et `rdv` ; le schéma
+Base `cleanpro` — schéma relationnel Le cœur applicatif s'appuie sur `client` et `rdv` ; 
+le schéma
 complet prévoit la gestion des prestataires, devis, services et avis.
 
 ### Diagramme entités-associations
 
 ```mermaid
 erDiagram
-    CLIENT ||--o{ RDV : "réserve"
-    CLIENT ||--o{ DEVIS : "demande"
-    CLIENT ||--o{ COMMENTAIRE : "publie"
-    SERVICE ||--o{ RDV : "concerné par"
-    SERVICE ||--o{ COMMENTAIRE : "évalué par"
-    SERVICE ||--o{ PRESTATAIRE_SERVICE : "assuré par"
-    SERVICE }o--o{ DEVIS : "redaction"
-    SERVICE }o--o{ COMMENTAIRE : "appreciation"
-    RDV }o--o{ PRESTATAIRE_SERVICE : "honorer"
+    CLIENT{ RDV : "réserve"
+            DEVIS : "demande"
+            COMMENTAIRE : "publie"
+    SERVICE{ RDV : "concerné par"
+             COMMENTAIRE : "évalué par"
+             PRESTATAIRE_SERVICE : "assuré par"
+             DEVIS : "redaction"
+             COMMENTAIRE : "appreciation"
+    RDV{ PRESTATAIRE_SERVICE : "honorer"
 
     CLIENT {
         int id_client PK
@@ -256,6 +259,10 @@ ORDER BY note_moyenne DESC;
 > Ces indicateurs (volume, occupation, saisonnalité, CA, satisfaction) peuvent
 > être branchés sur un outil de visualisation (Power BI, Metabase, Looker
 > Studio) pour un **tableau de bord de pilotage**.
+
+Un **module d'analyse complet** est disponible dans [`analytics/`](analytics/README.md) :
+jeu de données réaliste, pack SQL, notebook Python (pandas + graphiques) et
+**tableau de bord interactif** (Chart.js).
 
 ---
 

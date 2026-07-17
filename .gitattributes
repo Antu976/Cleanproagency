@@ -1,0 +1,7 @@
+# Ne pas compter les données internes de MariaDB dans les statistiques
+# de langages GitHub (elles étaient détectées à tort comme "Hack", etc.)
+data/mariadb/** linguist-vendored=true
+data/mariadb/** linguist-generated=true
+
+# Forcer la détection correcte du code
+*.php linguist-language=PHP
